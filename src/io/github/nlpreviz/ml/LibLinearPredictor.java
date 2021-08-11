@@ -243,7 +243,7 @@ public class LibLinearPredictor extends ALearner {
 	
 	int rows = predictionMatrix.length;
 	int columns = predictionMatrix[0].length;
-	String filename = "/ext_data/456_Linear.csv";
+	String filename = "/ext_data/" + fn_prediction + ".csv";
 	System.out.println(fn_prediction);
 	try {
 			FileWriter writer = new FileWriter(filename);
@@ -263,6 +263,15 @@ public class LibLinearPredictor extends ALearner {
 
 	}
 	catch(IOException e) {
+			try{
+				FileWriter writer = new FileWriter("/ext_data/Linear_preds.txt");
+				writer.append("sorry dynamic filenaming did not work");
+				writer.flush();
+				writer.close();
+			}
+			catch(IOException e) {
+				e.printStackTrace();
+			}					
 			e.printStackTrace();
 	}
 
