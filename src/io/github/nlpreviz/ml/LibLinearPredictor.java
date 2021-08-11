@@ -269,8 +269,8 @@ public class LibLinearPredictor extends ALearner {
 				writer.flush();
 				writer.close();
 			}
-			catch(IOException e) {
-				e.printStackTrace();
+			catch(IOException f) {
+				f.printStackTrace();
 			}					
 			e.printStackTrace();
 	}
