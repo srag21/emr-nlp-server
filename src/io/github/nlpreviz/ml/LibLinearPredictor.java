@@ -11,6 +11,10 @@ import io.github.nlpreviz.nlp.utils.Util;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.*;
+import java.lang.*;
 /**
  * @author Phuong Pham
  *
@@ -236,6 +240,31 @@ public class LibLinearPredictor extends ALearner {
                 }
             }
         }
+	
+	int rows = predictionMatrix.length;
+	int columns = predictionMatrix[0].length;
+	String filename = "/ext_data/456_Linear.csv";
+	System.out.println(fn_prediction);
+	try {
+			FileWriter writer = new FileWriter(filename);
+			for(int i = 0; i < rows; i++)
+			 {
+					int j;
+					for (j=0; j<columns-1; j++)
+					{
+						   writer.append(Double.toString(predictionMatrix[i][j]));
+						   writer.append(',');
+					}
+					 writer.append(Double.toString(predictionMatrix[i][j]));
+					 writer.append('\n');
+					 writer.flush();
+			 }
+			 writer.close();
+
+	}
+	catch(IOException e) {
+			e.printStackTrace();
+	}
 
         return predictionMatrix;
     }
