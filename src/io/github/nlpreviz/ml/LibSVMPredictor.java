@@ -13,8 +13,6 @@ import java.util.HashMap;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.*;
-import java.lang.*;
 
 /**
  * @author Phuong Pham
@@ -248,7 +246,7 @@ public class LibSVMPredictor extends ALearner {
 
 		int rows = predictionMatrix.length;
 		int columns = predictionMatrix[0].length;
-		String filename = "/ext_data/" + fn_prediction + ".csv";
+		String filename = "/ext_data/SVM_preds.csv";
 		System.out.println(fn_prediction);
 		try {
 				FileWriter writer = new FileWriter(filename);
@@ -267,16 +265,7 @@ public class LibSVMPredictor extends ALearner {
 				 writer.close();
 
 		}
-		catch(IOException e) {
-				try{
-					FileWriter writer = new FileWriter("/ext_data/SVM_preds.txt");
-					writer.append("sorry dynamic filenaming did not work");
-					writer.flush();
-					writer.close();
-				}
-				catch(IOException f) {
-					f.printStackTrace();
-				}					
+		catch(IOException e) {				
 				e.printStackTrace();
 		}
 
